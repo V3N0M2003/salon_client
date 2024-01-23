@@ -2,7 +2,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:salon_client/booking/book_appointment.dart';
+import 'package:salon_client/booking/book_appointment%20copy.dart';
 import 'package:salon_client/utils/textbox.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -12,6 +12,7 @@ class DetailsPage extends StatefulWidget {
   final String description;
   final num price;
   final String imageUrl;
+  final String id;
   const DetailsPage(
       {required this.name,
       required this.gender,
@@ -19,6 +20,7 @@ class DetailsPage extends StatefulWidget {
       required this.description,
       required this.imageUrl,
       required this.price,
+      required this.id,
       Key? key})
       : super(key: key);
 
@@ -33,6 +35,7 @@ class _DetailsPageState extends State<DetailsPage> {
   late String _description;
   late num _price;
   late String _imageUrl;
+  late String _id;
 
   @override
   void initState() {
@@ -43,6 +46,7 @@ class _DetailsPageState extends State<DetailsPage> {
     _description = widget.description;
     _imageUrl = widget.imageUrl;
     _price = widget.price;
+    _id = widget.id;
   }
 
   @override
@@ -112,7 +116,9 @@ class _DetailsPageState extends State<DetailsPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => AppointmentBookingPage()));
+                      builder: (context) => AppointmentBookingWidget(
+                            hairstyleId: _id,
+                          )));
             },
             child: Text('Book'),
           ),

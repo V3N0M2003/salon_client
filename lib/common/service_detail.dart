@@ -61,7 +61,8 @@ class ServiceList extends StatelessWidget {
                                     category: doc['category'],
                                     description: doc['description'],
                                     imageUrl: doc['imageUrl'],
-                                    price: doc['price'])));
+                                    price: doc['price'],
+                                    id: doc.id)));
                       }),
                       Icon(
                         Icons.format_align_justify_outlined,

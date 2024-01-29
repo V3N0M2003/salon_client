@@ -19,7 +19,7 @@ class Labelcontainer extends StatelessWidget {
       onTap: ontap,
       child: Container(
         height: 70,
-        width: 350,
+        width: MediaQuery.of(context).size.width - 20,
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: 1),

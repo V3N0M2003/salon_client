@@ -21,7 +21,7 @@ class _ScreenState extends State<Screen> {
     List pages = [
       const Homescreen(),
       const Favourite(),
-      const BookedAppointment(),
+      BookedAppointment(),
       ProfilePage(user.uid, context),
     ];
     return Scaffold(

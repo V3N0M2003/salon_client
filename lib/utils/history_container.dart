@@ -24,7 +24,9 @@ class HistoryContainer extends StatelessWidget {
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10)),
           border: Border.all(width: 0.7),
-          boxShadow: const [BoxShadow(color: Colors.grey, offset: Offset(4, 4))]),
+          boxShadow: const [
+            BoxShadow(color: Colors.grey, offset: Offset(4, 4))
+          ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -92,7 +94,7 @@ class HistoryContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text(
-                "Amount paid:",
+                "Amount ( Rs ):",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(price)

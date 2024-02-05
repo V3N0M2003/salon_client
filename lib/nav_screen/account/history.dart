@@ -12,6 +12,23 @@ class BookingHistory extends StatefulWidget {
 
 class _BookingHistoryState extends State<BookingHistory> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  late String? currentUserId;
+  DateTime today = DateTime.now();
+  late String formattedToday;
+
+  @override
+  void initState() {
+    super.initState();
+    formattedToday = "${today.year}-${today.month}-${today.day}";
+    User? user = _auth.currentUser;
+
+    if (user != null) {
+      setState(() {
+        currentUserId = user.uid;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +37,11 @@ class _BookingHistoryState extends State<BookingHistory> {
         backgroundColor: Colors.red,
       ),
       body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('bookings').snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection('bookings')
+              .where('bookingDate', isLessThan: formattedToday)
+              .orderBy('bookingDate')
+              .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
@@ -31,7 +52,7 @@ class _BookingHistoryState extends State<BookingHistory> {
             User? user = _auth.currentUser;
             final documents = snapshot.data!.docs;
             final Data = documents
-                .where((doc) => doc['userId'].contains(user!.uid))
+                .where((doc) => doc['userId'].contains(currentUserId))
                 .toList();
 
             if (Data.isEmpty) {

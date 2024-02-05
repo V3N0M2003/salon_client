@@ -73,7 +73,7 @@ class PopularStyle extends StatelessWidget {
                       data['imageUrl'],
                       height: 270,
                       width: 200,
-                      fit: BoxFit.fill,
+                      // fit: BoxFit.fill,
                     )),
                 const SizedBox(height: 10),
                 Column(
@@ -85,17 +85,18 @@ class PopularStyle extends StatelessWidget {
                         Text(data['name'],
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17)),
-                        Text("Rs. - $price", style: const TextStyle(fontSize: 17)),
+                        Text("Rs. - $price",
+                            style: const TextStyle(fontSize: 17)),
                       ],
                     ),
                     const SizedBox(height: 10),
                     Row(
                       children: [
                         Text(
-                          "${"                 " +
-                              data['gender']} " +
+                          "${"                 " + data['gender']} " +
                               data['category'],
-                          style: const TextStyle(color: Colors.grey, fontSize: 17),
+                          style:
+                              const TextStyle(color: Colors.grey, fontSize: 17),
                         ),
                       ],
                     ),

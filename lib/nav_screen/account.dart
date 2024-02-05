@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:salon_client/login/login.dart';
 import 'package:salon_client/nav_screen/account/history.dart';
 import 'package:salon_client/nav_screen/edit_profile.dart';
 import 'package:salon_client/utils/label_container.dart';
@@ -89,6 +91,19 @@ class ProfilePage extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const BookingHistory()));
                 }),
+            const SizedBox(height: 120),
+            ElevatedButton.icon(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const LoginScreen()));
+              },
+              icon: const Icon(Icons.exit_to_app), // Logout icon
+              label: const Text('Logout'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red, // Change button color
+              ),
+            )
           ],
         ),
       ),

@@ -16,7 +16,7 @@ class CategoryContainer extends StatelessWidget {
           width: 110,
           height: 180,
           decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 239, 86, 86),
+              color: Colors.red[300],
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),

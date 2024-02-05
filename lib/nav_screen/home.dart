@@ -41,7 +41,7 @@ class _HomescreenState extends State<Homescreen> {
     return Scaffold(
       backgroundColor: Colors.red[20],
       appBar: AppBar(
-        title: Text("Salooooooo...."),
+        title: const Text("Salooooooo...."),
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
@@ -143,10 +143,10 @@ class _HomescreenState extends State<Homescreen> {
                       //scrollDirection: Axis.horizontal,
                       itemCount: 3,
                       separatorBuilder: (context, index) =>
-                          SizedBox(height: 10.0),
+                          const SizedBox(height: 10.0),
                       itemBuilder: (context, index) {
                         return Container(
-                          padding: EdgeInsets.all(13),
+                          padding: const EdgeInsets.all(13),
                           child: PopularStyle(
                               documentId: result[index]['serviceId']),
                         );
@@ -155,7 +155,7 @@ class _HomescreenState extends State<Homescreen> {
                   }
                 },
               ),
-              SizedBox(height: 20)
+              const SizedBox(height: 20)
             ],
           ),
         ],

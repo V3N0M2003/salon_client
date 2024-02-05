@@ -5,7 +5,7 @@ import 'package:salon_client/common/detail.dart';
 class PopularStyle extends StatelessWidget {
   final String documentId;
 
-  PopularStyle({required this.documentId});
+  const PopularStyle({super.key, required this.documentId});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class PopularStyle extends StatelessWidget {
           .snapshots(),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
 
         if (!snapshot.hasData || !snapshot.data!.exists) {
-          return Center(
+          return const Center(
             child: Text('No data'),
           );
         }
@@ -43,7 +43,7 @@ class PopularStyle extends StatelessWidget {
                         id: documentId)));
           },
           child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             width: MediaQuery.of(context).size.width - 25,
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -83,26 +83,25 @@ class PopularStyle extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(data['name'],
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17)),
-                        Text("Rs. - $price", style: TextStyle(fontSize: 17)),
+                        Text("Rs. - $price", style: const TextStyle(fontSize: 17)),
                       ],
                     ),
                     const SizedBox(height: 10),
                     Row(
                       children: [
                         Text(
-                          "                 " +
-                              data['gender'] +
-                              " " +
+                          "${"                 " +
+                              data['gender']} " +
                               data['category'],
-                          style: TextStyle(color: Colors.grey, fontSize: 17),
+                          style: const TextStyle(color: Colors.grey, fontSize: 17),
                         ),
                       ],
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             ),
           ),

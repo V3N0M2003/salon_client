@@ -53,7 +53,7 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Details'),
+        title: const Text('Details'),
         backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(
@@ -63,44 +63,45 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Image.network(
                   _imageUrl,
                   height: 400,
                   width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
                 ),
-                SizedBox(height: 20),
-                Text('Name : '),
-                SizedBox(height: 5),
+                const SizedBox(height: 20),
+                const Text('Name : '),
+                const SizedBox(height: 5),
                 TextBox(_name),
-                SizedBox(height: 20),
-                Text('Category : '),
-                SizedBox(height: 5),
+                const SizedBox(height: 20),
+                const Text('Category : '),
+                const SizedBox(height: 5),
                 TextBox(_category),
-                SizedBox(height: 20),
-                Text('Gender : '),
-                SizedBox(height: 5),
+                const SizedBox(height: 20),
+                const Text('Gender : '),
+                const SizedBox(height: 5),
                 TextBox(_gender),
-                SizedBox(height: 20),
-                Text('Price : '),
-                SizedBox(height: 5),
+                const SizedBox(height: 20),
+                const Text('Price : '),
+                const SizedBox(height: 5),
                 TextBox(_price.toString()),
-                SizedBox(height: 20),
-                Text('Description : '),
-                SizedBox(height: 5),
+                const SizedBox(height: 20),
+                const Text('Description : '),
+                const SizedBox(height: 5),
                 Container(
                   height: 100,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     color: Colors.amber[50],
                     border: Border.all(width: 0.7),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10),
                         bottomLeft: Radius.circular(10),
                         bottomRight: Radius.circular(10)),
                   ),
-                  padding: EdgeInsets.only(top: 10, left: 10),
+                  padding: const EdgeInsets.only(top: 10, left: 10),
                   child: Text(_description),
                 ),
               ],
@@ -109,7 +110,7 @@ class _DetailsPageState extends State<DetailsPage> {
       bottomNavigationBar: BottomAppBar(
         elevation: 8,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             onPressed: () {
@@ -120,7 +121,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             hairstyleId: _id,
                           )));
             },
-            child: Text('Book'),
+            child: const Text('Book'),
           ),
         ),
       ),

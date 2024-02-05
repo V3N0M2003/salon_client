@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class EditProfilePage extends StatefulWidget {
   final String userId;
 
-  EditProfilePage(this.userId, {super.key});
+  const EditProfilePage(this.userId, {super.key});
 
   @override
   _EditProfilePageState createState() => _EditProfilePageState();
@@ -93,12 +93,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: const Text('Edit Profile'),
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -111,16 +111,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       child: Wrap(
                         children: [
                           ListTile(
-                            leading: Icon(Icons.photo_library),
-                            title: Text('Photo Library'),
+                            leading: const Icon(Icons.photo_library),
+                            title: const Text('Photo Library'),
                             onTap: () {
                               _getImage(ImageSource.gallery);
                               Navigator.of(context).pop();
                             },
                           ),
                           ListTile(
-                            leading: Icon(Icons.photo_camera),
-                            title: Text('Camera'),
+                            leading: const Icon(Icons.photo_camera),
+                            title: const Text('Camera'),
                             onTap: () {
                               _getImage(ImageSource.camera);
                               Navigator.of(context).pop();
@@ -144,21 +144,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               controller: _firstNameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'First Name',
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: _lastNameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Last Name',
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
               onPressed: () async {
@@ -166,7 +166,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 await _updateProfileData();
                 Navigator.of(context).pop();
               },
-              child: Center(child: Text('Save')),
+              child: const Center(child: Text('Save')),
             ),
           ],
         ),

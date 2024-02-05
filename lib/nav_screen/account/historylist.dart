@@ -22,6 +22,7 @@ class _HistoryListbuilderState extends State<HistoryListbuilder> {
   late String imgUrl;
 
   late String gender;
+  @override
   void initState() async {
     super.initState();
     fetchdata();

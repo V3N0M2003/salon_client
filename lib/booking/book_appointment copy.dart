@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class AppointmentBookingWidget extends StatefulWidget {
   final String hairstyleId;
 
-  AppointmentBookingWidget({required this.hairstyleId});
+  const AppointmentBookingWidget({super.key, required this.hairstyleId});
 
   @override
   _AppointmentBookingWidgetState createState() =>
@@ -15,12 +15,12 @@ class AppointmentBookingWidget extends StatefulWidget {
 
 class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
   DateTime _selectedDay = DateTime.now();
-  List<String> _timeSlots = [];
+  final List<String> _timeSlots = [];
   List<String> _bookedTimeSlots = [];
   late String _selectedHairstyle;
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
@@ -57,16 +57,16 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Booking'),
-          content: Text('Do you want to confirm the booking?'),
+          title: const Text('Confirm Booking'),
+          content: const Text('Do you want to confirm the booking?'),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: Text('Confirm'),
+              child: const Text('Confirm'),
             ),
           ],
         );
@@ -103,15 +103,15 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Booking Successful'),
-              content: Text('Your appointment has been booked.'),
+              title: const Text('Booking Successful'),
+              content: const Text('Your appointment has been booked.'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
                   },
-                  child: Text('OK'),
+                  child: const Text('OK'),
                 ),
               ],
             );
@@ -127,44 +127,44 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Appointment Booking'),
+        title: const Text('Appointment Booking'),
         backgroundColor: Colors.red,
       ),
       body: Column(
         children: [
           TableCalendar(
             focusedDay: _selectedDay,
-            firstDay: DateTime.now().subtract(Duration(days: 30)),
-            lastDay: DateTime.now().add(Duration(days: 30)),
+            firstDay: DateTime.now().subtract(const Duration(days: 30)),
+            lastDay: DateTime.now().add(const Duration(days: 30)),
             availableCalendarFormats: const {
               CalendarFormat.month: 'Month',
               CalendarFormat.week: 'Week',
             },
             calendarFormat: CalendarFormat.month,
-            headerStyle: HeaderStyle(
+            headerStyle: const HeaderStyle(
               titleCentered: true,
               formatButtonShowsNext: false,
             ),
             selectedDayPredicate: (day) {
               return isSameDay(_selectedDay, day);
             },
-            calendarStyle: CalendarStyle(
+            calendarStyle: const CalendarStyle(
                 selectedDecoration:
                     BoxDecoration(color: Colors.red, shape: BoxShape.circle)),
             enabledDayPredicate: (day) {
-              return !day.isBefore(DateTime.now().subtract(Duration(days: 1)));
+              return !day.isBefore(DateTime.now().subtract(const Duration(days: 1)));
             },
             onDaySelected: (date, events) => _handleDaySelected(date, events),
           ),
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             'Available Time Slots:',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Expanded(
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 8.0,
@@ -186,7 +186,7 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
                       child: Text(
                         _timeSlots[index],
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),

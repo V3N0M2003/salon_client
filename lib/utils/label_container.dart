@@ -23,44 +23,44 @@ class Labelcontainer extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: 1),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20)),
-            boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(4, 4))]),
+            boxShadow: const [BoxShadow(color: Colors.grey, offset: Offset(4, 4))]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               child:
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                Padding(padding: EdgeInsets.only(left: 20)),
+                const Padding(padding: EdgeInsets.only(left: 20)),
                 Icon(
                   icon,
                   size: 40,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Padding(padding: EdgeInsets.only(top: 13)),
+                      const Padding(padding: EdgeInsets.only(top: 13)),
                       Text(
                         title,
-                        style: TextStyle(fontSize: 17),
+                        style: const TextStyle(fontSize: 17),
                       ),
                       Text(
                         subtitle,
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
+                        style: const TextStyle(color: Colors.grey, fontSize: 15),
                       )
                     ],
                   ),
                 ),
               ]),
             ),
-            Icon(
+            const Icon(
               Icons.arrow_circle_right_outlined,
               size: 40,
             )

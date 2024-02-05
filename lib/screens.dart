@@ -14,14 +14,14 @@ class Screen extends StatefulWidget {
 
 class _ScreenState extends State<Screen> {
   int _pageIndex = 0;
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     User user = _auth.currentUser!;
     List pages = [
-      Homescreen(),
-      Favourite(),
-      BookedAppointment(),
+      const Homescreen(),
+      const Favourite(),
+      const BookedAppointment(),
       ProfilePage(user.uid, context),
     ];
     return Scaffold(
@@ -33,8 +33,8 @@ class _ScreenState extends State<Screen> {
           });
         },
         unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.orange,
-        items: [
+        selectedItemColor: Colors.red,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

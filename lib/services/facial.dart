@@ -13,10 +13,10 @@ class _FacialState extends State<Facial> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Facial"),
+        title: const Text("Facial"),
         backgroundColor: Colors.red,
       ),
-      body: ServiceList('Facial'),
+      body: const ServiceList('Facial'),
     );
   }
 }

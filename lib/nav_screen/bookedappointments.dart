@@ -11,13 +11,13 @@ class _BookedAppointmentState extends State<BookedAppointment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.red[20],
       appBar: AppBar(
-        title: Text('Scheduled Appointments'),
+        title: const Text('Scheduled Appointments'),
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
-      body: Center(child: Text('Appointments')),
+      body: const Center(child: Text('Appointments')),
     );
   }
 }

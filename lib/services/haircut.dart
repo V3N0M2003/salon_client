@@ -13,10 +13,10 @@ class _HairCutState extends State<HairCut> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hair-cut"),
+        title: const Text("Hair-cut"),
         backgroundColor: Colors.red,
       ),
-      body: ServiceList('Hair cut'),
+      body: const ServiceList('Hair cut'),
     );
   }
 }

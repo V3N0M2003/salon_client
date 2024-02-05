@@ -18,13 +18,13 @@ class HistoryContainer extends StatelessWidget {
       //padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10)),
           border: Border.all(width: 0.7),
-          boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(4, 4))]),
+          boxShadow: const [BoxShadow(color: Colors.grey, offset: Offset(4, 4))]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +33,7 @@ class HistoryContainer extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: Colors.grey[400],
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10),
                   )),
@@ -42,11 +42,11 @@ class HistoryContainer extends StatelessWidget {
                 height: 250,
                 width: 250,
               )),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
+              const Text(
                 "Service Name :",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -54,51 +54,51 @@ class HistoryContainer extends StatelessWidget {
             ],
           ),
           //Text("Service Name : $servicename"),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
+              const Text(
                 "Category :",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(category)
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
+              const Text(
                 "Appointment date:",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(date)
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
+              const Text(
                 "Scheduled time:",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(time)
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
+              const Text(
                 "Amount paid:",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(price)
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
         ],
       ),
     );

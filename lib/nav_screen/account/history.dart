@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:salon_client/nav_screen/account/historylist.dart';
 import 'package:salon_client/nav_screen/account/historylist2.dart';
 
 class BookingHistory extends StatefulWidget {
@@ -12,21 +11,21 @@ class BookingHistory extends StatefulWidget {
 }
 
 class _BookingHistoryState extends State<BookingHistory> {
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("History"),
+        title: const Text("History"),
         backgroundColor: Colors.red,
       ),
       body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance.collection('bookings').snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return Center(child: Text('No data available.'));
+              return const Center(child: Text('No data available.'));
             }
 
             User? user = _auth.currentUser;
@@ -36,7 +35,7 @@ class _BookingHistoryState extends State<BookingHistory> {
                 .toList();
 
             if (Data.isEmpty) {
-              return Center(child: Text('No data available.'));
+              return const Center(child: Text('No data available.'));
             }
 
             return ListView.builder(
@@ -62,7 +61,7 @@ class _BookingHistoryState extends State<BookingHistory> {
                     Text(
                       doc['selectedTimeSlot'].toString(),
                     ),*/
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     )
                   ],

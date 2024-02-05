@@ -13,10 +13,10 @@ class _BeardState extends State<Beard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Beard"),
+        title: const Text("Beard"),
         backgroundColor: Colors.red,
       ),
-      body: ServiceList('Beard'),
+      body: const ServiceList('Beard'),
     );
   }
 }

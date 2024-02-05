@@ -4,7 +4,7 @@ class CustomSearchBar extends StatelessWidget {
   final TextEditingController searchController;
   final Function(String) onSearchTextChanged;
 
-  CustomSearchBar({
+  const CustomSearchBar({super.key, 
     required this.searchController,
     required this.onSearchTextChanged,
   });
@@ -12,7 +12,7 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),
@@ -20,21 +20,21 @@ class CustomSearchBar extends StatelessWidget {
       child: Row(
         children: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {},
           ),
           Expanded(
             child: TextField(
               controller: searchController,
               onChanged: onSearchTextChanged,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search...',
                 border: InputBorder.none,
               ),
             ),
           ),
           IconButton(
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
             onPressed: () {
               searchController.clear();
               onSearchTextChanged('');

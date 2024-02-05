@@ -8,8 +8,8 @@ class HistoryFetch extends StatelessWidget {
   final String serviceId;
   final String userId;
 
-  HistoryFetch(
-      {required this.date,
+  const HistoryFetch(
+      {super.key, required this.date,
       required this.timeSlot,
       required this.serviceId,
       required this.userId});
@@ -48,7 +48,7 @@ class HistoryFetch extends StatelessWidget {
         future: fetchData(serviceId, userId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
@@ -57,7 +57,7 @@ class HistoryFetch extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   HistoryContainer(
                       date,
                       timeSlot,
@@ -65,7 +65,7 @@ class HistoryFetch extends StatelessWidget {
                       snapshot.data!['category'],
                       snapshot.data!['imageUrl'],
                       snapshot.data!['price']),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   )
                   //Text('Date: $date'),

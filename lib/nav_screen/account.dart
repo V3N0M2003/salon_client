@@ -8,7 +8,7 @@ class ProfilePage extends StatelessWidget {
   final String userId;
   final BuildContext context;
 
-  ProfilePage(this.userId, this.context, {super.key});
+  const ProfilePage(this.userId, this.context, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,11 @@ class ProfilePage extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.data() == null) {
-          return Center(child: Text('No data found!'));
+          return const Center(child: Text('No data found!'));
         } else {
           var userData = snapshot.data!.data() as Map<String, dynamic>;
           String name = userData['firstName'] + ' ' + userData['secondName'];
@@ -36,14 +36,14 @@ class ProfilePage extends StatelessWidget {
 
   Widget buildProfileUI(String name, String email, String profileImageUrl) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.red[20],
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -51,17 +51,17 @@ class ProfilePage extends StatelessWidget {
               radius: 50,
               backgroundImage: NetworkImage(profileImageUrl),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               name,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               email,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Labelcontainer(
                 title: 'Edit Profile',
                 subtitle: 'Name, Email, Profile',
@@ -72,13 +72,13 @@ class ProfilePage extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => EditProfilePage(userId)));
                 }),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Labelcontainer(
                 title: 'Password',
                 subtitle: 'change password',
                 icon: Icons.key_outlined,
                 ontap: () {}),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Labelcontainer(
                 title: 'History',
                 subtitle: 'Past bookings, Payments',
@@ -87,7 +87,7 @@ class ProfilePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => BookingHistory()));
+                          builder: (context) => const BookingHistory()));
                 }),
           ],
         ),

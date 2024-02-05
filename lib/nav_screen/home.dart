@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:salon_client/services/beard.dart';
 import 'package:salon_client/services/facial.dart';
 import 'package:salon_client/services/haircut.dart';
 import 'package:salon_client/services/others.dart';
 import 'package:salon_client/utils/category_builder.dart';
+import 'package:salon_client/utils/popular_container.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -13,9 +15,36 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  List<Map<String, dynamic>> result = [];
+
+  Future<void> fetchData() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('bookings').get();
+
+    Map<String, int> countMap = {};
+
+    for (QueryDocumentSnapshot document in querySnapshot.docs) {
+      String serviceId = document['selectedHairstyle'];
+      countMap[serviceId] = (countMap[serviceId] ?? 0) + 1;
+    }
+
+    List<MapEntry<String, int>> sortedServiceIds = countMap.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+
+    result = sortedServiceIds
+        .map((serviceId) => {'serviceId': serviceId.key})
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red[20],
+      appBar: AppBar(
+        title: Text("Salooooooo...."),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+      ),
       body: ListView(
         children: [
           Column(
@@ -23,8 +52,8 @@ class _HomescreenState extends State<Homescreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                padding: EdgeInsets.only(top: 40, left: 15),
-                child: Row(
+                padding: const EdgeInsets.only(top: 40, left: 15),
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
@@ -44,68 +73,89 @@ class _HomescreenState extends State<Homescreen> {
                     Icon(
                       Icons.emoji_people,
                       size: 50,
-                      color: const Color.fromARGB(255, 247, 78, 66),
+                      color: Color.fromARGB(255, 247, 78, 66),
                     )
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              //CustomSearchBar(searchController: 'hello', onSearchTextChanged: onSearchTextChanged)
-              Container(
+              const SizedBox(height: 10),
+              SizedBox(
                   height: 220,
-                  //padding: EdgeInsets.only(top: 40),
-                  //decoration: BoxDecoration(color: Colors.grey[200]),
                   child: Center(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    child:
-                        //Text('    Categories', style: TextStyle(fontSize: 20)),
-                        //SizedBox(height: 10),
-                        SingleChildScrollView(
+                    child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: <Widget>[
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           CategoryContainer(
                               'Hair cut', 'assets/icons/mysalon.png', () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HairCut()));
+                                    builder: (context) => const HairCut()));
                           }),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           CategoryContainer('Beard', 'assets/icons/beard.png',
                               () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Beard()));
+                                    builder: (context) => const Beard()));
                           }),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           CategoryContainer('Facial', 'assets/icons/facial.png',
                               () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Facial()));
+                                    builder: (context) => const Facial()));
                           }),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           CategoryContainer('Others', 'assets/icons/others.png',
                               () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Others()));
+                                    builder: (context) => const Others()));
                           }),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                         ],
                       ),
                     ),
                   )),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 '    Popular',
                 style: TextStyle(fontSize: 20),
               ),
+              const SizedBox(height: 10),
+              FutureBuilder<void>(
+                future: fetchData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      physics: const ScrollPhysics(),
+                      //scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 10.0),
+                      itemBuilder: (context, index) {
+                        return Container(
+                          padding: EdgeInsets.all(13),
+                          child: PopularStyle(
+                              documentId: result[index]['serviceId']),
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+              SizedBox(height: 20)
             ],
           ),
         ],

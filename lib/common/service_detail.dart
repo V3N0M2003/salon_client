@@ -13,9 +13,9 @@ class ServiceList extends StatelessWidget {
       stream: FirebaseFirestore.instance.collection('services').snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          return Center(child: Text('No data available.'));
+          return const Center(child: Text('No data available.'));
         }
 
         final documents = snapshot.data!.docs;
@@ -24,11 +24,11 @@ class ServiceList extends StatelessWidget {
             .toList();
 
         if (Data.isEmpty) {
-          return Center(child: Text('No data available.'));
+          return const Center(child: Text('No data available.'));
         }
 
         return ListView.builder(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           itemCount: Data.length,
           itemBuilder: (context, index) {
             final doc = Data[index];
@@ -38,13 +38,13 @@ class ServiceList extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10),
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10)),
                       border: Border.all(width: 0.7),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(color: Colors.grey, offset: Offset(4, 4))
                       ]),
                   child: Row(
@@ -64,14 +64,14 @@ class ServiceList extends StatelessWidget {
                                     price: doc['price'],
                                     id: doc.id)));
                       }),
-                      Icon(
+                      const Icon(
                         Icons.format_align_justify_outlined,
                         size: 30,
                       )
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 )
               ],

@@ -13,10 +13,10 @@ class _OthersState extends State<Others> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Others"),
+        title: const Text("Others"),
         backgroundColor: Colors.red,
       ),
-      body: ServiceList('Other'),
+      body: const ServiceList('Other'),
     );
   }
 }

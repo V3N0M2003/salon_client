@@ -94,7 +94,7 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
           'selectedHairstyle': _selectedHairstyle,
           'selectedTimeSlot': selectedTimeSlot,
           'bookingDate':
-              "${_selectedDay.year}-${_selectedDay.month}-${_selectedDay.day}",
+              "${_selectedDay.year}-${_selectedDay.month.toString().padLeft(2, '0')}-${_selectedDay.day.toString().padLeft(2, '0')}",
           'complete': "0",
         });
 

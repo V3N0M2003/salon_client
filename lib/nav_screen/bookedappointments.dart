@@ -19,7 +19,8 @@ class _BookedAppointmentState extends State<BookedAppointment> {
   @override
   void initState() {
     super.initState();
-    formattedToday = "${today.year}-${today.month}-${today.day}";
+    formattedToday =
+        "${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}";
     User? user = _auth.currentUser;
 
     if (user != null) {

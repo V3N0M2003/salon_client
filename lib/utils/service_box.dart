@@ -54,7 +54,7 @@ class ServiceDisplay extends StatelessWidget {
                       Row(
                         children: [
                           const Text(
-                            'Gender : ',
+                            'Section : ',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
                           ),
@@ -68,7 +68,8 @@ class ServiceDisplay extends StatelessWidget {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
                           ),
-                          Text(' Rs $price', style: const TextStyle(fontSize: 18))
+                          Text(' Rs $price',
+                              style: const TextStyle(fontSize: 18))
                         ],
                       ),
                     ],

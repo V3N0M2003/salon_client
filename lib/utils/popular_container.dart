@@ -35,7 +35,7 @@ class PopularStyle extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) => DetailsPage(
                         name: data['name'],
-                        gender: data['gender'],
+                        section: data['section'],
                         category: data['category'],
                         description: data['description'],
                         imageUrl: data['imageUrl'],
@@ -93,7 +93,7 @@ class PopularStyle extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "${"                 " + data['gender']} " +
+                          "${"                 " + data['section']} " +
                               data['category'],
                           style:
                               const TextStyle(color: Colors.grey, fontSize: 17),

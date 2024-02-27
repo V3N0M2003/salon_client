@@ -41,9 +41,8 @@ class _BookedAppointmentState extends State<BookedAppointment> {
       body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection('bookings')
-              //.where('userId', isEqualTo: currentUserId)
               .where('bookingDate', isGreaterThanOrEqualTo: formattedToday)
-              .orderBy('bookingDate')
+              .where('complete', isEqualTo: '0')
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {

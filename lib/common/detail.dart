@@ -7,7 +7,7 @@ import 'package:salon_client/utils/textbox.dart';
 
 class DetailsPage extends StatefulWidget {
   final String name;
-  final String gender;
+  final String section;
   final String category;
   final String description;
   final num price;
@@ -15,7 +15,7 @@ class DetailsPage extends StatefulWidget {
   final String id;
   const DetailsPage(
       {required this.name,
-      required this.gender,
+      required this.section,
       required this.category,
       required this.description,
       required this.imageUrl,
@@ -30,7 +30,7 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   late String _name;
-  late String _gender;
+  late String _section;
   late String _category;
   late String _description;
   late num _price;
@@ -41,7 +41,7 @@ class _DetailsPageState extends State<DetailsPage> {
   void initState() {
     super.initState();
     _name = widget.name;
-    _gender = widget.gender;
+    _section = widget.section;
     _category = widget.category;
     _description = widget.description;
     _imageUrl = widget.imageUrl;
@@ -53,7 +53,7 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details'),
+        title: const Text('Book Appointment'),
         backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(
@@ -79,9 +79,9 @@ class _DetailsPageState extends State<DetailsPage> {
                 const SizedBox(height: 5),
                 TextBox(_category),
                 const SizedBox(height: 20),
-                const Text('Gender : '),
+                const Text('section : '),
                 const SizedBox(height: 5),
-                TextBox(_gender),
+                TextBox(_section),
                 const SizedBox(height: 20),
                 const Text('Price : '),
                 const SizedBox(height: 5),

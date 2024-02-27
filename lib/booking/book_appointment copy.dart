@@ -95,6 +95,7 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
           'selectedTimeSlot': selectedTimeSlot,
           'bookingDate':
               "${_selectedDay.year}-${_selectedDay.month}-${_selectedDay.day}",
+          'complete': "0",
         });
 
         _fetchBookedTimeSlots();
@@ -152,7 +153,8 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
                 selectedDecoration:
                     BoxDecoration(color: Colors.red, shape: BoxShape.circle)),
             enabledDayPredicate: (day) {
-              return !day.isBefore(DateTime.now().subtract(const Duration(days: 1)));
+              return !day
+                  .isBefore(DateTime.now().subtract(const Duration(days: 1)));
             },
             onDaySelected: (date, events) => _handleDaySelected(date, events),
           ),

@@ -4,13 +4,16 @@ import 'package:salon_client/common/detail.dart';
 import 'package:salon_client/utils/service_box.dart';
 
 class ServiceList extends StatelessWidget {
-  final String category;
-  const ServiceList(this.category, {super.key});
+  final String category, section;
+  const ServiceList(this.category, this.section, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('services').snapshots(),
+      stream: FirebaseFirestore.instance
+          .collection('services')
+          .where('category', isEqualTo: category)
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -19,9 +22,8 @@ class ServiceList extends StatelessWidget {
         }
 
         final documents = snapshot.data!.docs;
-        final Data = documents
-            .where((doc) => doc['category'].contains(category))
-            .toList();
+        final Data =
+            documents.where((doc) => doc['section'].contains(section)).toList();
 
         if (Data.isEmpty) {
           return const Center(child: Text('No data available.'));
@@ -50,14 +52,14 @@ class ServiceList extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ServiceDisplay(doc['name'], doc['gender'],
+                      ServiceDisplay(doc['name'], doc['section'],
                           doc['imageUrl'], doc['price'], () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => DetailsPage(
                                     name: doc['name'],
-                                    gender: doc['gender'],
+                                    section: doc['section'],
                                     category: doc['category'],
                                     description: doc['description'],
                                     imageUrl: doc['imageUrl'],

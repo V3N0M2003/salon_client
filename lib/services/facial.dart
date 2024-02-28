@@ -24,9 +24,10 @@ class _FacialState extends State<Facial> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Facial"),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
         actions: [
           DropdownButton(
+            style: TextStyle(fontSize: 15, color: Colors.blue),
             value: _selectedPage,
             onChanged: (value) {
               _navigateToPage(value as PageType);

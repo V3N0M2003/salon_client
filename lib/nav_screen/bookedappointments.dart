@@ -33,11 +33,11 @@ class _BookedAppointmentState extends State<BookedAppointment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[20],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Scheduled Appointments'),
         centerTitle: true,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
       ),
       body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance

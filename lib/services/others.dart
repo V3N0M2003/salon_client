@@ -24,9 +24,10 @@ class _OthersState extends State<Others> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Others"),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
         actions: [
           DropdownButton(
+            style: TextStyle(fontSize: 15, color: Colors.blue),
             value: _selectedPage,
             onChanged: (value) {
               _navigateToPage(value as PageType);

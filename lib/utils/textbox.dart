@@ -10,7 +10,7 @@ class TextBox extends StatelessWidget {
       height: 40,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Colors.amber[50],
+        color: Colors.white,
         border: Border.all(width: 0.7),
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(10),

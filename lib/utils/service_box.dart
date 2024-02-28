@@ -12,77 +12,110 @@ class ServiceDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.only(left: 5),
-        height: 140,
-        decoration: const BoxDecoration(
+    return Container(
+      padding: EdgeInsets.all(10),
+      width: MediaQuery.of(context).size.width - 23,
+      //padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              child: Row(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10)),
+          border: Border.all(width: 0.7),
+          boxShadow: const [
+            BoxShadow(color: Colors.grey, offset: Offset(4, 4))
+          ]),
+      child: Column(
+        children: [
+          Row(
+            //mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Image.network(imageUrl, height: 150, width: 150),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    child: Image.network(
-                      imageUrl,
-                      height: 130,
-                      width: 130,
-                    ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  //SizedBox(height: 10),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Row(
-                        children: [
-                          const Text(
-                            'Name   : ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          Text(' $name', style: const TextStyle(fontSize: 18))
-                        ],
+                      const Text(
+                        "Service Name :",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 17),
                       ),
-                      Row(
-                        children: [
-                          const Text(
-                            'Section : ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          Text(' $gender', style: const TextStyle(fontSize: 18))
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Text(
-                            'Price    : ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          Text(' Rs $price',
-                              style: const TextStyle(fontSize: 18))
-                        ],
-                      ),
+                      Text(
+                        ' $name',
+                        style: const TextStyle(fontSize: 17),
+                      )
                     ],
                   ),
-                  /*Icon(
-                    Icons.format_align_justify_outlined,
-                    size: 30,
-                  )*/
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Text(
+                        "Section : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 17),
+                      ),
+                      Text(
+                        gender,
+                        style: const TextStyle(fontSize: 17),
+                      )
+                    ],
+                  ),
+                  //Text("Service Name : $servicename"),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Text(
+                        "Price : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 17),
+                      ),
+                      Text(
+                        price.toString(),
+                        style: const TextStyle(fontSize: 17),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 15),
+          InkWell(
+            onTap: onTap,
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10)),
+                  border: Border.all(width: 0.7),
+                  boxShadow: const [
+                    BoxShadow(color: Colors.grey, offset: Offset(4, 4))
+                  ]),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Book now",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

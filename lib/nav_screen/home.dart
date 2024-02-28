@@ -39,11 +39,11 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[20],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Salon"),
+        title: const Text("Salon OP"),
         centerTitle: true,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
       ),
       body: ListView(
         children: [
@@ -124,6 +124,32 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                   )),
               const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 45,
+                    width: MediaQuery.of(context).size.width - 23,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(width: 1.5),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10)),
+                    ),
+                    child: const Row(
+                      children: [
+                        Text("  "),
+                        Icon(Icons.search),
+                        Text("Search", style: TextStyle(fontSize: 15))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
               const Text(
                 '    Popular',
                 style: TextStyle(fontSize: 20),

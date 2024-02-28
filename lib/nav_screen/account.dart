@@ -38,11 +38,11 @@ class ProfilePage extends StatelessWidget {
 
   Widget buildProfileUI(String name, String email, String profileImageUrl) {
     return Scaffold(
-      backgroundColor: Colors.red[20],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Profile'),
         centerTitle: true,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -95,13 +95,15 @@ class ProfilePage extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const LoginScreen()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()));
               },
               icon: const Icon(Icons.exit_to_app), // Logout icon
               label: const Text('Logout'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Change button color
+                backgroundColor: Colors.black, // Change button color
               ),
             )
           ],

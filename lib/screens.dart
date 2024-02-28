@@ -32,8 +32,8 @@ class _ScreenState extends State<Screen> {
             _pageIndex = value;
           });
         },
-        unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.black,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

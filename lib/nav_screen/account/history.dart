@@ -34,7 +34,7 @@ class _BookingHistoryState extends State<BookingHistory> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("History"),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
       ),
       body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance

@@ -38,7 +38,7 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
 
   Future<void> _fetchBookedTimeSlots() async {
     String formattedDate =
-        "${_selectedDay.year}-${_selectedDay.month}-${_selectedDay.day}";
+        "${_selectedDay.year}-${_selectedDay.month.toString().padLeft(2, '0')}-${_selectedDay.day.toString().padLeft(2, '0')}";
     QuerySnapshot querySnapshot = await _firestore
         .collection('bookings')
         .where('bookingDate', isEqualTo: formattedDate)
@@ -129,7 +129,7 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Appointment Booking'),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
       ),
       body: Column(
         children: [
@@ -151,7 +151,7 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
             },
             calendarStyle: const CalendarStyle(
                 selectedDecoration:
-                    BoxDecoration(color: Colors.red, shape: BoxShape.circle)),
+                    BoxDecoration(color: Colors.black, shape: BoxShape.circle)),
             enabledDayPredicate: (day) {
               return !day
                   .isBefore(DateTime.now().subtract(const Duration(days: 1)));
@@ -166,8 +166,9 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
           const SizedBox(height: 10),
           Expanded(
             child: GridView.builder(
+              padding: EdgeInsets.all(10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+                crossAxisCount: 4,
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 8.0,
               ),
@@ -180,17 +181,18 @@ class _AppointmentBookingWidgetState extends State<AppointmentBookingWidget> {
                       ? null
                       : () => bookAppointment(_timeSlots[index]),
                   child: Container(
+                    padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: isBooked ? Colors.red : Colors.green,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
+                        color: isBooked ? Colors.red : Colors.white,
+                        borderRadius: BorderRadius.circular(8.0),
+                        border: Border.all(width: 1)),
                     child: Center(
                       child: Text(
                         _timeSlots[index],
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          //fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

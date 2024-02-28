@@ -66,10 +66,6 @@ class ServiceList extends StatelessWidget {
                                     price: doc['price'],
                                     id: doc.id)));
                       }),
-                      const Icon(
-                        Icons.format_align_justify_outlined,
-                        size: 30,
-                      )
                     ],
                   ),
                 ),

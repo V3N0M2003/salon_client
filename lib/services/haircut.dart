@@ -24,9 +24,10 @@ class _HairCutState extends State<HairCut> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Hair-cut"),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
         actions: [
           DropdownButton(
+            style: TextStyle(fontSize: 15, color: Colors.blue),
             value: _selectedPage,
             onChanged: (value) {
               _navigateToPage(value as PageType);

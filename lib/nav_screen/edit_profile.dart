@@ -95,7 +95,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       appBar: AppBar(
         title: const Text('Edit Profile'),
         centerTitle: true,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -160,7 +160,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
               onPressed: () async {
                 await _uploadImage();
                 await _updateProfileData();

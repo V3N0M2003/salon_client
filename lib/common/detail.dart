@@ -54,7 +54,7 @@ class _DetailsPageState extends State<DetailsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Book Appointment'),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -71,29 +71,44 @@ class _DetailsPageState extends State<DetailsPage> {
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(height: 20),
-                const Text('Name : '),
+                const Text(
+                  'Name : ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 5),
                 TextBox(_name),
                 const SizedBox(height: 20),
-                const Text('Category : '),
+                const Text(
+                  'Category : ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 5),
                 TextBox(_category),
                 const SizedBox(height: 20),
-                const Text('section : '),
+                const Text(
+                  'section : ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 5),
                 TextBox(_section),
                 const SizedBox(height: 20),
-                const Text('Price : '),
+                const Text(
+                  'Price : ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 5),
                 TextBox(_price.toString()),
                 const SizedBox(height: 20),
-                const Text('Description : '),
+                const Text(
+                  'Description : ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   height: 100,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: Colors.amber[50],
+                    color: Colors.white,
                     border: Border.all(width: 0.7),
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
@@ -112,7 +127,7 @@ class _DetailsPageState extends State<DetailsPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
           child: ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
             onPressed: () {
               Navigator.push(
                   context,

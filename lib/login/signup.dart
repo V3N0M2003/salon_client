@@ -178,7 +178,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.red),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -283,7 +283,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         .set(userModel.toMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
 
-    Navigator.pushAndRemoveUntil((context),
-        MaterialPageRoute(builder: (context) => const Screen()), (route) => false);
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(builder: (context) => const Screen()),
+        (route) => false);
   }
 }
